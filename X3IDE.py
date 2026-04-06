@@ -858,7 +858,6 @@ class X3IDE:
         frame = tk.Frame(win, padx=10, pady=10)
         frame.pack(fill=tk.BOTH, expand=True)
 
-        # --- Editor Theme ---
         tk.Label(frame, text="Editor Theme").pack(anchor="w")
         editor_theme_var = tk.StringVar(value=self.settings.get("editor_theme", "dark"))
         editor_theme_menu = ttk.Combobox(
@@ -869,7 +868,6 @@ class X3IDE:
         )
         editor_theme_menu.pack(fill=tk.X, pady=4)
 
-        # --- Console Theme ---
         tk.Label(frame, text="Console Theme").pack(anchor="w")
         console_theme_var = tk.StringVar(value=self.settings.get("console_theme", "dark"))
         console_theme_menu = ttk.Combobox(
@@ -880,21 +878,17 @@ class X3IDE:
         )
         console_theme_menu.pack(fill=tk.X, pady=4)
 
-        # --- Font Size ---
         tk.Label(frame, text="Font Size").pack(anchor="w")
         font_var = tk.IntVar(value=self.settings.get("font_size", 12))
         font_spin = tk.Spinbox(frame, from_=8, to=32, textvariable=font_var)
         font_spin.pack(fill=tk.X, pady=4)
 
-        # --- Auto Update ---
         auto_update_var = tk.BooleanVar(value=self.settings.get("auto_check_updates", True))
         tk.Checkbutton(
             frame,
             text="Auto Check Updates",
             variable=auto_update_var
         ).pack(anchor="w", pady=6)
-
-        # --- Buttons ---
         btn_frame = tk.Frame(frame)
         btn_frame.pack(fill=tk.X, pady=10)
 
@@ -903,8 +897,6 @@ class X3IDE:
             self.settings["console_theme"] = console_theme_var.get()
             self.settings["font_size"] = font_var.get()
             self.settings["auto_check_updates"] = auto_update_var.get()
-
-            # Apply instantly
             self.editor_theme = self.settings["editor_theme"]
             self.console_theme = self.settings["console_theme"]
             self.editor_font_size = self.settings["font_size"]
